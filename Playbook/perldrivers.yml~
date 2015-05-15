@@ -15,22 +15,24 @@
       shell: curl -L http://cpanmin.us | perl - App::cpanminus
       when:  result|failed
     
-    - name: Ensure required Perl modules installed
-      cpanm: name=MIYAGAWA/Plack-0.99_05.tar.gz
       
     - name: Ensure required Perl modules installed
       cpanm: name=MONGODB/MongoDB-v0.703.4-TRIAL.tar.gz
       
     - name: Ensure required Perl modules installed
-      cpanm: name=Spreadsheet::XLSX
+      cpanm: name=CGI
+      
+    - name: Ensure required Perl modules installed
+      cpanm: name=JSON
       
     - name: Ensure required Perl modules installed
       cpanm: name=Encode
       
     - name: Ensure required Perl modules installed
-      cpanm: name=CGI
+      cpanm: name=Encode
+
+
       
-    - name: Ensure required Perl modules installed
-    	cpanm: name=JSON
-# vim: set ts=2 sw=2
+
+  # vim: set ts=2 sw=2
 
