@@ -1,11 +1,10 @@
 ---
 - hosts: ubuntumachine
-  gather_facts: false
   sudo: true
  
   tasks:
     - name: Ensure gcc installed
-      yum:  name=gcc state=present
+      apt:  name=gcc state=present
  
     - name: Test for cpanm
       shell: perl -MApp::cpanminus -e1
@@ -17,10 +16,21 @@
       when:  result|failed
     
     - name: Ensure required Perl modules installed
-      yum: name={{ item }} state=present
-      with_items:
-        - perl-Test-Harness
-        - perl-Time-HiRes
- 
+      cpanm: name=MIYAGAWA/Plack-0.99_05.tar.gz
+      
+    - name: Ensure required Perl modules installed
+      cpanm: name=MONGODB/MongoDB-v0.703.4-TRIAL.tar.gz
+      
+    - name: Ensure required Perl modules installed
+      cpanm: name=Spreadsheet::XLSX
+      
+    - name: Ensure required Perl modules installed
+      cpanm: name=Encode
+      
+    - name: Ensure required Perl modules installed
+      cpanm: name=CGI
+      
+    - name: Ensure required Perl modules installed
+    	cpanm: name=JSON
 # vim: set ts=2 sw=2
 
