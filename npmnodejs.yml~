@@ -1,0 +1,9 @@
+---
+- hosts: ubuntumachine
+  sudo: yes
+  tasks:
+    - name: install nodejs
+      apt: name=nodejs update_cache=yes state=latest
+    - name: install npm
+      apt: name=npm update_cache=yes state=lates
+

@@ -1,0 +1,25 @@
+---
+- hosts: ubuntumachine
+  sudo: true
+ 
+  tasks:
+    - name: Ensure gcc installed
+      yum:  name=gcc state=present
+ 
+    - name: Test for cpanm
+      shell: perl -MApp::cpanminus -e1
+      register: result
+      ignore_errors: true
+    
+    - name:  Install CPANm
+      shell: curl -L http://cpanmin.us | perl - App::cpanminus
+      when:  result|failed
+    
+    - name: Ensure required Perl modules installed
+      yum: name={{ item }} state=present
+      with_items:
+        - perl-Test-Harness
+        - perl-Time-HiRes
+ 
+# vim: set ts=2 sw=2
+
