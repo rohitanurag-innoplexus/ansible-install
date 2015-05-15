@@ -1,0 +1,7 @@
+---
+- hosts: ubuntumachine
+  sudo: yes
+  tasks:
+    - name: install php5
+      apt: name=php5 update_cache=yes state=latest
+
