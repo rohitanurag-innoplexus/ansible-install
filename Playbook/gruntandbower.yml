@@ -1,0 +1,21 @@
+---
+- hosts: ubuntumachine
+  sudo: true
+ 
+  tasks:
+
+     - name: Install "grunt" node.js package
+       npm: name=grunt path=/app/location
+       
+
+     - name: Install "bower" node.js package
+       npm: name=bower path=/app/location
+     
+    
+     - name: Install "grunt-cli" node.js package
+       npm: name=grunt-cli path=/app/location
+
+      
+    
+      
+
